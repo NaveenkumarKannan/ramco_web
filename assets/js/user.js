@@ -69,3 +69,44 @@ formData.append('file_data', file_data);
         }
     });//end a req
 });
+
+
+$(document).on('submit', '#form-coupon', function (event) {
+    event.preventDefault();
+    /* Act on the event */
+    var code = $('#p_code').val();
+    var c_code = $('#c_code').val();
+    var sdate = $('#sdate').val();
+    var edate = $('#edate').val();
+    var discount = $('#discount').val();
+    var dvalue = $('#dvalue').val();
+
+    
+    $.ajax({
+        url: 'coupon.php',
+         type: 'post',
+            dataType: 'json',
+            data: {
+                c_code: c_code,
+                code: code,
+                sdate: sdate,
+                edate: edate,
+                discount: discount,
+                dvalue: dvalue
+            },
+           success: function (data) {
+            console.log(data);
+            if (data.valid == true) {
+                $('#modal-msg').find('#msg-body').text("Coupon Added Successfully!");
+                $('#modal-msg').modal('show');
+                $('#message-box-ok').on('click', function (event) {
+                    window.location = 'Add_coupon.php';
+                });
+
+            }
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });//end a req
+});

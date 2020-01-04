@@ -809,7 +809,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <form class="needs-validation" novalidate="">
+                                                <form class="needs-validation" id="form-coupon" novalidate="">
                                                     <div class="form-row">
                                                         <div class="col-md-6 mb-3">
                                                             <label for="validationCustom01">Product code</label>
@@ -828,8 +828,8 @@
                                                                 type="text"
                                                                 class="form-control"
                                                                 placeholder="Coupon ID"
-                                                                id="cid"
-                                                                name="cid"
+                                                                id="c_code"
+                                                                name="c_code"
                                                                 required="">
                                                             <div class="valid-feedback"></div>
                                                         </div>
@@ -869,8 +869,8 @@
                                                             <label for="exampleFormControlSelect1">Discount Type</label>
                                                             <select class="form-control" id="discount" name="discount">
                                                                 <option selected="">select</option>
-                                                                <option>Percentage</option>
-                                                                <option>Price</option>
+                                                                <option value="0">Percentage</option>
+                                                                <option value="1">Price</option>
 
                                                             </select>
                                                         </div>
@@ -908,8 +908,8 @@
                                                                 .call(forms, function (form) {
                                                                     form.addEventListener('submit', function (event) {
                                                                         if (form.checkValidity() === false) {
-                                                                            event.preventDefault();
-                                                                            event.stopPropagation();
+                                                                            //event.preventDefault();
+                                                                            //event.stopPropagation();
                                                                         }
                                                                         form
                                                                             .classList
@@ -935,6 +935,7 @@
         </div>
     </div>
 </div>
+<?php include_once 'model/msg.php'; ?>
 
 <!--[if lt IE 11]> <div class="ie-warning"> <h1>Warning!!</h1> <p>You are using
 an outdated version of Internet Explorer, please upgrade <br/>to any of the
@@ -1003,5 +1004,6 @@ src="assets/images/browser/ie.png" alt=""> <div>IE (11 & above)</div> </a> </li>
     });
 </script>
 <script src="assets\js\analytics.js"></script>
+        <script src="assets\js\user.js"></script>
 </body>
 </html>
